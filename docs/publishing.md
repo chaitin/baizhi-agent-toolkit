@@ -45,7 +45,7 @@ Registry 元数据为公开信息，适用其 CC0 条款，不得包含凭据。
 5. 在确认新入口可用后，由拥有旧命名空间权限的维护者将旧版本标记为 `deprecated`，明确指出新名称。组织仓库的 OIDC 身份不能修改个人命名空间。
 6. 停止旧仓库后续发布，保留历史与迁移说明，不删除旧条目或历史版本。
 
-**本 PR 只准备迁移；不提前停用旧条目，不执行组织 Registry 发布，不改写下游已提交申请。** 首次发布新名称时可以使用 `0.1.0`，但不得覆盖旧名称下的已发布元数据。
+初始集成已通过 [PR #1](https://github.com/chaitin/baizhi-agent-toolkit/pull/1) 合并至组织仓库。合并不会自动发布 Registry 或停用旧条目；发布和迁移仍需按上述顺序独立验收。公司仓库地址可用于后续贡献与接入说明；在新 Registry 条目核验前，不将旧条目标记为弃用。首次发布新名称时可以使用 `0.1.0`，但不得覆盖旧名称下的已发布元数据。
 
 官方参考：[GitHub OIDC 鉴权实现](https://github.com/modelcontextprotocol/registry/blob/main/internal/api/handlers/v0/auth/github_oidc.go)、[Publisher 命令](https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/cli/commands.md)。
 
