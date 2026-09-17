@@ -17,7 +17,11 @@ On 2026-09-17, the organization migration candidate passed all 22 checks, offici
 
 After the initial merge, a separate isolated API harness verified Gemini CLI 0.60.0's actual GitHub URL installer against the organization repository and checked the installed Git HEAD against `a643da3396721375132005f71227ff0f24d823b6`. Random synthetic sensitive-setting input, encrypted storage and a fresh-process reload passed. This was not a full interactive terminal/UI test, a Gallery check, or an authenticated production MCP/model test; see the [recorded scope](gemini-verification.md#official-organization-url-installation-2026-09-17).
 
+A subsequent real PTY installation of that official local checkout passed consent, masked key entry, exit-code and fresh-process storage/reload checks. Direct interactive CLI URL attempts failed during Git download before those prompts. See the [separate interactive evidence](gemini-verification.md#interactive-cli-verification-of-the-official-checkout-2026-09-17); it does not replace the failed CLI URL test or establish production tool execution.
+
 Before a release, also run each marketplace's own validator/generator and compare generated entries with the intended source. Validate the extension using the supported Gemini CLI version and its real settings/connection code in an isolated test environment.
+
+Kilo received an additional fixed-revision execution check of its original Solid installation component, backend entry builder and project-header sanitizer. Five groups of checks passed with random synthetic values and explicit UI/context/message-bridge doubles. The extension host, full backend, persistent configuration and production tools were not exercised. See [Kilo implementation verification](kilo-verification.md).
 
 ## Release checks
 
@@ -31,4 +35,4 @@ Before a release, also run each marketplace's own validator/generator and compar
 
 The service's unauthenticated initialization endpoint returned HTTP 401 during the 2026-09-16 integration work. A previous same-day Hermes-specific test discovered tools and called the three starting tools, but that is not an end-to-end test of Kilo, Cline or Gemini CLI.
 
-Gemini CLI 0.60.0's actual installer, secret reload and HTTP transport passed isolated tests with a dummy credential and a local MCP fixture. See [the detailed evidence and reproduction steps](gemini-verification.md). Kilo's entry passed its three marketplace generators and template checks; its installer behavior was source-reviewed. Cline's entry passed the 203-entry catalog validation and six source-backed parser checks, which also established its missing native credential flow. None of these claims implies authenticated production testing in all three clients.
+Gemini CLI 0.60.0's actual installer, secret reload and HTTP transport passed isolated tests with a dummy credential and a local MCP fixture. See [the detailed evidence and reproduction steps](gemini-verification.md). Kilo's entry passed its three marketplace generators and template checks; its installer behavior was source-reviewed and selected component/backend functions were subsequently executed in isolation as documented above. Cline's entry passed the 203-entry catalog validation and six source-backed parser checks, which also established its missing native credential flow. None of these claims implies authenticated production testing in all three clients.

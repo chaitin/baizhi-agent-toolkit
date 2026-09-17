@@ -27,6 +27,14 @@ The isolated test provided a randomly generated synthetic value through the sens
 
 This exercised the actual GitHub URL installation implementation through an API harness, not a complete terminal/UI interaction or a production MCP/model session. Consent and secret entry were supplied by test callbacks. Native OS keychain use was disabled. The network-dependent check is separate from the dependency-free default CI suite and the local-only reproduction script below. Gallery indexing was not established by this result.
 
+## Interactive CLI verification of the official checkout (2026-09-17)
+
+The actual `gemini extensions install <local checkout>` command was run in a PTY, without `--consent`, against the previously downloaded organization checkout at commit `a643da3396721375132005f71227ff0f24d823b6`. It displayed the remote endpoint, masked Authorization header and three-tool allowlist before the `Do you want to continue? [Y/n]` prompt. After confirmation, it displayed the real **Baizhi API Key** prompt, rendered a random synthetic input as asterisks, and reported successful installation and enablement with exit code 0.
+
+A fresh process verified the resulting installation type `local`, the same Git commit, stored-key reload, intact manifest placeholder, masked listing, the three-tool allowlist, credential-file mode 0600, and no plaintext synthetic value in generated state. This used an isolated CLI home and forced encrypted file storage; no production MCP, model API or native OS keychain was used. The optional local `node-pty` warning did not prevent this installation.
+
+Two separate attempts to run the interactive CLI directly from the organization URL exited before the consent/key prompts because Git reported an HTTP/2 framing error. An environment-only HTTP/1.1 override attempt did not resolve it. Those attempts are **not** successful URL CLI tests. The earlier successful actual URL-installer API check and this successful local interactive check provide distinct evidence; together they are not claimed as a single URL-to-production end-to-end run.
+
 ## Reproduce local checks
 
 Keep `gemini-extension.json`, `verify-gemini.mjs`, and a `runtime` directory together. Install the pinned package locally, then run the script with Node.js 22:

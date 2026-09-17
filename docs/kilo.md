@@ -32,6 +32,8 @@ The linked repository contains integration files, not the hosted backend. Servic
 
 ## Troubleshooting and removal
 
+The original installation component, entry builder and project-header sanitizer have passed isolated execution checks at the pinned revision above. See [verification details and limits](kilo-verification.md). This is not an authenticated full-client test and does not remove the storage or scope restrictions described here.
+
 - `401` / `403`: verify the key, expiry and service permissions; do not paste the credential into an issue.
 - No tools: check the network endpoint, key permissions and client-selected tools; reconnect after changing configuration.
 - Billing errors: check the console's balance and the selected tool's pricing.
