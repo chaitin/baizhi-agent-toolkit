@@ -1,0 +1,26 @@
+{
+  "name": "baizhi-agent-toolkit",
+  "version": "0.1.0",
+  "description": "Baizhi Agent Toolkit: web search, page scraping, and structured extraction through a hosted MCP server.",
+  "mcpServers": {
+    "baizhi-agent-toolkit": {
+      "httpUrl": "https://agent-toolkit.app.baizhi.cloud/mcp",
+      "headers": {
+        "Authorization": "Bearer ${BAIZHI_API_KEY}"
+      },
+      "includeTools": [
+        "websearch_search",
+        "web_scrape",
+        "web_extract"
+      ]
+    }
+  },
+  "settings": [
+    {
+      "name": "Baizhi API Key",
+      "description": "Enter your Baizhi API key from https://baizhi.cloud/landing/agent-toolkit (key only, without the Bearer prefix).",
+      "envVar": "BAIZHI_API_KEY",
+      "sensitive": true
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.chaitin/baizhi-agent-toolkit",
+  "title": "Baizhi Cloud Agent Toolkit",
+  "description": "Web search, page extraction, visual tools and developer utilities through Baizhi Cloud.",
+  "version": "0.1.0",
+  "websiteUrl": "https://github.com/chaitin/baizhi-agent-toolkit",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://agent-toolkit.app.baizhi.cloud/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer authentication with your own Baizhi Cloud API key. Service credits may be required.",
+          "value": "Bearer {BAIZHI_API_KEY}",
+          "isRequired": true,
+          "isSecret": true,
+          "variables": {
+            "BAIZHI_API_KEY": {
+              "description": "Create a scoped API key at https://agent-toolkit.app.baizhi.cloud/ and paste only the key, without Bearer.",
+              "isRequired": true,
+              "isSecret": true,
+              "format": "string"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
