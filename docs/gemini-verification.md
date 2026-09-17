@@ -19,7 +19,15 @@ The script-based checks were rerun successfully on 2026-09-17 for the organizati
 
 The install manifest was not modified for these checks. Only the transport test's in-memory endpoint was replaced with localhost. The test harness disabled Gemini's analytics configuration and forced encrypted file storage before importing the CLI code. No global Gemini installation or real-user credential storage was modified.
 
-## Reproduce
+## Official organization URL installation (2026-09-17)
+
+Gemini CLI 0.60.0's unmodified `ExtensionManager.installOrUpdateExtension({ type: 'git', source })` successfully installed from `https://github.com/chaitin/baizhi-agent-toolkit`. Install metadata recorded that exact source and type `git`; the installed Git HEAD matched organization main at `a643da3396721375132005f71227ff0f24d823b6` (the merged initial integration).
+
+The isolated test provided a randomly generated synthetic value through the sensitive-setting callback. It verified exactly one setting request, encrypted file storage with mode 0600, no plaintext synthetic value in generated files, an intact manifest placeholder, redacted extension listing and the three expected tool names. A separate fresh process reloaded the installation, requested no new setting and resolved the stored value into the expected Authorization header. Both processes exited successfully.
+
+This exercised the actual GitHub URL installation implementation through an API harness, not a complete terminal/UI interaction or a production MCP/model session. Consent and secret entry were supplied by test callbacks. Native OS keychain use was disabled. The network-dependent check is separate from the dependency-free default CI suite and the local-only reproduction script below. Gallery indexing was not established by this result.
+
+## Reproduce local checks
 
 Keep `gemini-extension.json`, `verify-gemini.mjs`, and a `runtime` directory together. Install the pinned package locally, then run the script with Node.js 22:
 
@@ -43,7 +51,7 @@ Installing with `--ignore-scripts` left an optional `node-pty` native binary una
 - The test proves the client's configuration and transport behavior, not server-side authorization, quota, billing, or tool execution.
 - Gemini's missing-setting warning does not block installation or guarantee no outgoing request. The hosted server must reject unauthenticated requests.
 - The official extension settings minimum is 0.28.0; the executable test matrix covers 0.60.0 only.
-- GitHub URL installation and gallery visibility depend on repository publication and external indexing; the local test does not claim either completed.
+- The organization URL installer path was verified separately above for the recorded commit. Gallery visibility remains unverified, and the local reproduction script alone does not establish either URL installation or indexing.
 
 ## Official references
 

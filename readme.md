@@ -33,7 +33,7 @@
 | 入口 | 本仓库提供的能力 | 状态与限制 |
 | --- | --- | --- |
 | [Hermes Agent](https://github.com/NousResearch/hermes-agent/pull/112773) | MCP 目录条目、原生凭据输入及专用接入文档 | PR 待审核；已验证 CLI 安装与三个默认工具的真实调用，未宣称完整 GUI 或模型端到端验收 |
-| [Gemini CLI](docs/gemini-cli.md) | 可安装的扩展；敏感设置输入 Key；默认启用三个工具 | 已完成 0.60.0 的本地隔离测试；未宣称 Gallery 已收录或完成生产端到端验证 |
+| [Gemini CLI](docs/gemini-cli.md) | 可安装的扩展；敏感设置输入 Key；默认启用三个工具 | 已完成 0.60.0 的本地隔离与官方仓库 URL 安装器测试；未宣称 Gallery 已收录或完成生产端到端验证 |
 | [Kilo Code](docs/kilo.md) | 市场条目接入指南与凭据配置说明 | [市场 PR #275](https://github.com/Kilo-Org/kilo-marketplace/pull/275) 待审核；当前参数输入不保证遮罩或加密存储 |
 | [Cline](docs/cline.md) | 手动鉴权配置指南 | [市场草稿 PR #118](https://github.com/cline/marketplace/pull/118) 待审核；原生安全凭据流程已[向上游提议](https://github.com/cline/cline/discussions/14181) |
 | [官方 MCP Registry](server.json) | 远程服务清单及必填敏感参数描述 | 目标名称为 `io.github.chaitin/baizhi-agent-toolkit`；清单已合并，待维护者手动发布并验证 |

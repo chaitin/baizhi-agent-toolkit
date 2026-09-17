@@ -15,6 +15,8 @@ The default suite contains 22 checks: manifest invariants, positive/negative Reg
 
 On 2026-09-17, the organization migration candidate passed all 22 checks, official `mcp-publisher v1.8.1 validate server.json`, and the optional Gemini CLI 0.60.0 test on Node.js 22.22.2. This rerun used only a synthetic key and localhost transport; the organization Registry entry has not been published by these checks.
 
+After the initial merge, a separate isolated API harness verified Gemini CLI 0.60.0's actual GitHub URL installer against the organization repository and checked the installed Git HEAD against `a643da3396721375132005f71227ff0f24d823b6`. Random synthetic sensitive-setting input, encrypted storage and a fresh-process reload passed. This was not a full interactive terminal/UI test, a Gallery check, or an authenticated production MCP/model test; see the [recorded scope](gemini-verification.md#official-organization-url-installation-2026-09-17).
+
 Before a release, also run each marketplace's own validator/generator and compare generated entries with the intended source. Validate the extension using the supported Gemini CLI version and its real settings/connection code in an isolated test environment.
 
 ## Release checks
