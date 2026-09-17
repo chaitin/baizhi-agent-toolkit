@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.gemini/
+.mcpregistry_*
+token.json
+*.pem
+*.log
+.DS_Store
+coverage/
+runtime/
+npm-cache/
+test-state-*/
+interactive-home/

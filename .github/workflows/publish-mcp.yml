@@ -1,0 +1,45 @@
+name: Publish MCP Registry
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-mcp-registry
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.repository == 'chaitin/baizhi-agent-toolkit' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: '22'
+      - name: Test integration invariants
+        run: node --test tests/*.test.mjs
+      - name: Install pinned official publisher
+        run: |
+          curl --fail --location --retry 3 --output "$RUNNER_TEMP/mcp-publisher.tar.gz" https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz
+          echo "a06c9096dcb9727c13555b6be26c7effa707b01f06a4c561ba7a3635443cf2cc  $RUNNER_TEMP/mcp-publisher.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/mcp-publisher.tar.gz" -C "$RUNNER_TEMP" mcp-publisher
+      - name: Validate registry metadata
+        run: '"$RUNNER_TEMP/mcp-publisher" validate server.json'
+      - name: Authenticate with short-lived GitHub OIDC
+        run: '"$RUNNER_TEMP/mcp-publisher" login github-oidc'
+      - name: Publish remote server metadata
+        run: '"$RUNNER_TEMP/mcp-publisher" publish server.json'
+      - name: Verify public Registry entry
+        run: node scripts/verify-registry.mjs
+      - name: Remove runner authentication
+        if: always()
+        run: '"$RUNNER_TEMP/mcp-publisher" logout'
