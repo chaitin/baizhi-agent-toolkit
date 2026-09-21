@@ -35,9 +35,10 @@
 | [Gemini CLI](docs/gemini-cli.md) | 可安装的扩展；敏感设置输入 Key；默认启用三个工具 | 已完成 0.60.0 的本地隔离测试；未宣称 Gallery 已收录或完成生产端到端验证 |
 | [Kilo Code](docs/kilo.md) | 市场条目接入指南与凭据配置说明 | [市场 PR #275](https://github.com/Kilo-Org/kilo-marketplace/pull/275) 待审核；当前参数输入不保证遮罩或加密存储 |
 | [Cline](docs/cline.md) | 手动鉴权配置指南 | [市场草稿 PR #118](https://github.com/cline/marketplace/pull/118) 待审核；原生安全凭据流程已[向上游提议](https://github.com/cline/cline/discussions/14181) |
+| [Pi（预览）](docs/pi.md) | 社区 MCP 适配器接入、研究技能与可复现验证入口 | 2026-09-21：Git 预览安装及合成后端宿主验证通过；依赖诊断边界、生产验收与 npm/官方目录仍待处理 |
 | [官方 MCP Registry](server.json) | 远程服务清单及必填敏感参数描述 | 目标名称为 `io.github.chaitin/baizhi-agent-toolkit`；合并后须由维护者手动发布并验证 |
 
-上述市场状态记录于 2026-09-17，最新状态以链接为准。提交申请、仓库可访问、Registry 登记、市场收录和客户端验证是不同阶段，不代表第三方认证或背书。Registry 组织命名空间迁移步骤见[发布文档](docs/publishing.md)。
+Gemini、Kilo、Cline 与 Registry 的上述状态记录于 2026-09-17；Pi 预览状态记录于 2026-09-21，最新状态以各链接为准。提交申请、仓库可访问、Registry 登记、市场收录和客户端验证是不同阶段，不代表第三方认证或背书。Registry 组织命名空间迁移步骤见[发布文档](docs/publishing.md)。
 
 ### Gemini CLI 快速开始
 
